@@ -12,26 +12,27 @@
 </head>
 
 <body>
-<!-- Scroll nav -->
-<nav class="nav navbar-expand-lg bg-dark" id="small-nav">
+	<!-- Scroll nav -->
+	<nav class="nav navbar-expand-lg bg-dark fixed-top rounded-bottom" id="small-nav" style="height: 75px;">
 		<div class="container " style="border: 1px solid blue;">
 			<span class=" p-2 d-flex flex-row-reverse" style="border: 1px solid green; ">
 				<a class="navbar-brand  m-2" href="#">
-				<img style="border-radius: 50%;" src="https://img.freepik.com/free-vector/colourful-illustration-programmer-working_23-2148281410.jpg?w=740&t=st=1680410983~exp=1680411583~hmac=c0014abfc6d9a9f2bc88761878b79d73f9a99fc9956560514674ec64fc9f1c74" alt="" width="40" height="40">
-			</a>
-					<button class="btn btn-success m-2" type="button">
-						<i class="fa-solid fa-magnifying-glass"></i>
-					</button>
-					<button class="btn btn-primary m-2">
-						<i class="fa-solid fa-upload"></i>
-						</button>
+					<img style="border-radius: 50%;" src="https://img.freepik.com/free-vector/colourful-illustration-programmer-working_23-2148281410.jpg?w=740&t=st=1680410983~exp=1680411583~hmac=c0014abfc6d9a9f2bc88761878b79d73f9a99fc9956560514674ec64fc9f1c74" alt="" width="40" height="40">
+				</a>
+				<button class="btn btn-success m-2" type="button">
+					<i class="fa-solid fa-magnifying-glass"></i>
+				</button>
+				<button class="btn btn-primary m-2">
+					<i class="fa-solid fa-upload"></i>
+				</button>
 			</span>
 		</div>
 	</nav>
 
+	<div class="bg-dark" style="height: 75px;"></div>
 
 	<!-- second nav -->
-	<nav class="bg-dark p-3 sub-nav-bar d-none d-lg-block ">
+	<nav class="bg-dark p-3 sub-nav-bar d-none d-lg-block rounded-bottom">
 		<div class="container" style="border: 1px solid red; height: auto;">
 
 			<div class="row">
@@ -70,10 +71,39 @@
 		</div>
 	</nav>
 
-	
 
+	<!-- pagination -->
+	<div class="container mt-3">
+		<nav aria-label="Page navigation example ">
+			<ul class="pagination justify-content-center">
+				<li class="page-item disabled">
+					<a class="page-link" href="#" tabindex="-1">Previous</a>
+				</li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item">
+					<a class="page-link" href="#">Next</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
 
+	<!-- Image Section -->
+	<div class="container">
+		<div class="row" style="border: 1px solid red;">
+			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
+			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
+			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
+			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
+		</div>
 
+		<div class="row"></div>
+		<div class="row"></div>
+		<div class="row"></div>
+		<div class="row"></div>
+
+	</div>
 	<div style="height: 500px;">
 
 	</div>
