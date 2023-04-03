@@ -24,43 +24,56 @@
       <div class="row d-flex justify-content-center">
         <!-- Register form -->
         <div class="col col-lg-6 row align-items-center" style="border: 1px solid blue; height: 75vh;">
-          
+        
+        <?php echo validation_errors(); ?>
         <?php echo form_open('Register/registerUser'); ?>
         
-        <form method="post" action="">
+        <!-- <form method="post" action=""> -->
             <div class="d-flex justify-content-center">
               <h1>Register</h1>
             </div>
+
+            <?php
+              if ($this->session->flashdata('unsucecess')) {
+                echo '
+                  <div class="alert alert-danger" role="alert">
+                  <i class="fa-solid fa-circle-info"></i> &nbsp'.
+                  $this->session->flashdata('unsucecess')
+                  .'</div>
+                ';
+              }
+              ?>
+
             <div class="row mt-3">
               <div class="col col-lg-6">
                 <label for="fname" class="form-label "><strong>First Name</strong> </label>
-                <input type="text" class="form-control" id="fname">
+                <input type="text" class="form-control" id="fname" name="fname">
               </div>
               <div class="col col-lg-6">
                 <label for="lame" class="form-label "><strong>Last Name</strong> </label>
-                <input type="text" class="form-control" id="lname">
+                <input type="text" class="form-control" id="lname" name="lname">
               </div>
             </div>
 
 
             <div class="mt-2">
               <label for="uname" class="form-label "><strong>User Name</strong> </label>
-              <input type="text" class="form-control" id="uname">
+              <input type="text" class="form-control" id="uname" name="uname">
             </div>
 
             <div class="mt-2">
               <label for="email" class="form-label "><strong>Email address</strong> </label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+              <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
             </div>
 
             <div class="row mt-2">
               <div class="col col-lg-6">
                 <label for="password" class="form-label"><strong>Password</strong> </label>
-                <input type="password" class="form-control" id="password">
+                <input type="password" class="form-control" id="password" name="password">
               </div>
               <div class="col col-lg-6">
-                <label for="confirm-password" class="form-label"><strong>Confirm Password</strong> </label>
-                <input type="password" class="form-control" id="confirm-password">
+                <label for="confpassword" class="form-label"><strong>Confirm Password</strong> </label>
+                <input type="password" class="form-control" id="confpassword" name="confpassword">
               </div>
             </div>
 
@@ -74,11 +87,11 @@
                 </a>
               </p>
             </div>
-          </form>
+          <!-- </form> -->
 
           <?php echo form_close() ?>
 
-        </div>
+        </div>sl
       </div>
     </div>
   </section>

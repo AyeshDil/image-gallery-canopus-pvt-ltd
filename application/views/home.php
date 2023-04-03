@@ -12,13 +12,30 @@
 </head>
 
 <body>
+
+	<!-- Disable Url routing and redirect to the login page-->
+	<?php
+	if (!$this->session->userdata('logged_in')) {
+		redirect('login');
+	}
+	?>
+
+
 	<!-- Scroll nav -->
 	<nav class="nav navbar-expand-lg bg-dark fixed-top rounded-bottom" id="small-nav" style="height: 75px;">
 		<div class="container " style="border: 1px solid blue;">
 			<span class=" p-2 d-flex flex-row-reverse" style="border: 1px solid green; ">
+			<a href="<?php echo base_url('index.php/Login/logoutUser') ?>">Logout</a>
 				<a class="navbar-brand  m-2" href="#">
 					<img style="border-radius: 50%;" src="https://img.freepik.com/free-vector/colourful-illustration-programmer-working_23-2148281410.jpg?w=740&t=st=1680410983~exp=1680411583~hmac=c0014abfc6d9a9f2bc88761878b79d73f9a99fc9956560514674ec64fc9f1c74" alt="" width="40" height="40">
 				</a>
+				<!-- user Name -->
+				<div class="d-flex align-items-center mt-3">
+					<p style="color: white;">
+						<?php echo $this->session->userdata('fname') ?>
+					</p>
+				</div>
+
 				<button class="btn btn-success m-2" type="button">
 					<i class="fa-solid fa-magnifying-glass"></i>
 				</button>

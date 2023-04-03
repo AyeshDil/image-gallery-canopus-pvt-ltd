@@ -427,7 +427,7 @@ $config['cookie_samesite'] 	= 'Lax';
 |          for backwards compatibility purposes!
 |
 */
-$config['standardize_newlines'] = FALSE;
+$config['standardize_newlines'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------

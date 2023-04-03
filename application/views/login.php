@@ -23,42 +23,64 @@
 
         <!-- login form -->
         <div class="col col-lg-6 row align-items-center" style="border: 1px solid blue; height: 75vh;">
-          <form action="" >
-            <div class="d-flex justify-content-center">
-              <h1>Login</h1>
-            </div>
-            <div class="mt-3">
-              <label for="email" class="form-label "><strong>Email address</strong> </label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-              <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-            </div>
-            <div class="mt-3">
-              <label for="password" class="form-label"><strong>Password</strong> </label>
-              <input type="password" class="form-control" id="password">
-            </div>
-            <div class="mt-3 d-flex justify-content-center col-12">
-              <button type="submit" class="btn btn-dark w-100">LOGIN</button>
-            </div>
-            <div>
-              <a class="small text-muted" href="#!">
-                Forgot password?
+
+          <?php echo validation_errors(); ?>
+          <?php echo form_open('Login/loginUser'); ?>
+
+          <div class="d-flex justify-content-center">
+            <h1>Login</h1>
+          </div>
+
+          <?php
+          if ($this->session->flashdata('sucecess')) {
+            echo '
+                  <div class="alert alert-primary" role="alert">
+                  <i class="fa-solid fa-circle-info"></i> &nbsp' .
+              $this->session->flashdata('sucecess')
+              . '</div>
+                ';
+          } elseif($this->session->flashdata('error')){
+            echo '
+            <div class="alert alert-danger" role="alert">
+            <i class="fa-solid fa-circle-info"></i> &nbsp' .
+        $this->session->flashdata('error')
+        . '</div>
+          ';
+          }
+          ?>
+
+          <div class="mt-3">
+            <label for="email" class="form-label "><strong>Email address</strong> </label>
+            <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
+            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+          </div>
+          <div class="mt-3">
+            <label for="password" class="form-label"><strong>Password</strong> </label>
+            <input type="password" class="form-control" id="password" name="password">
+          </div>
+          <div class="mt-3 d-flex justify-content-center col-12">
+            <button type="submit" class="btn btn-dark w-100">LOGIN</button>
+          </div>
+          <div>
+            <a class="small text-muted" href="#!">
+              Forgot password?
+            </a>
+            <p style="color: #393f81;">Don't have an account?
+              <a href="<?php echo base_url('index.php/Register'); ?>" style="color: #393f81;">
+                Register here
               </a>
-              <p style="color: #393f81;">Don't have an account?
-                <a href="<?php echo base_url('index.php/Register'); ?>" style="color: #393f81;">
-                  Register here
-                </a>
-              </p>
-              <div class="d-flex justify-content-end">
-                <a href="#!" class="small text-muted">
+            </p>
+            <div class="d-flex justify-content-end">
+              <a href="#!" class="small text-muted">
                 Terms of use.
               </a>
               <a href="#!" class="small text-muted">
                 Privacy policy
               </a>
-              </div>
-              
             </div>
-          </form>
+
+          </div>
+          <?php echo form_close() ?>
         </div>
 
       </div>
@@ -69,7 +91,6 @@
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
   <script src="https://kit.fontawesome.com/6b4fc80c6e.js" crossorigin="anonymous"></script>
-
 </body>
 
 </html>
