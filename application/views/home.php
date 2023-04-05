@@ -55,7 +55,10 @@
 			<div class="row">
 				<div class="container d-flex p-2">
 					<div class="col col-lg-6 p-2" style="border: 1px solid blue; height: 50px;">
-						<input type="text" class="form-control h-100" id="search-caption" placeholder="Search by caption">
+						<!--Search by caption  -->
+					<input type="text" class="form-control h-100" id="search-caption" placeholder="Search by caption">
+
+
 					</div>
 					<div class="col col-lg-4 p-2" style="border: 1px solid blue; height: 50px;">
 						<div class="dropdown w-100 h-100">
@@ -145,24 +148,48 @@
 			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
 			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
 
-			<?php
-			// $this->load->collator('');
-
-			
-			foreach ($my_results as $row) {
-				echo '<div class="col col-lg-3 display-area d-flex justify-content-center" style="border: 1px solid blue; height: 200px;">
-				<img class="h-100" src="data:image/jpeg;base64,'.base64_encode($row['image']) .'" />
-				</div>';
-		}
-		
 
 
 
+			<?php foreach ($thumbnails as $thumbnail) : ?>
+				<div class="col col-lg-3 display-area d-flex justify-content-center" style="border: 1px solid blue; height: 200px;">
+					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#img-model">
+						<a href="<?php echo base_url('index.php/Imageview/index/'.$thumbnail['id']); ?>">
+						<img onclick="load('<?php echo $thumbnail['id']; ?>');" id="<?php echo $thumbnail['id']; ?>" class="h-100 show-img" 
+						src="<?php echo 'data:image/jpeg;base64,' . base64_encode($thumbnail['image']); ?>" />
+					</a>
+				</button>
+				</div>
+			<?php endforeach; ?>
 
-			// foreach ($response as $display_data) {
-			// 	echo '<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;">' . $this->$display_data->image_data('image') . '</div>';
-			// }
-			?>
+
+			<!-- Button trigger modal -->
+
+
+			<!-- Modal -->
+			<!-- <div id="mod"></div>
+
+			<div class="modal fade" id="" tabindex="-1" aria-labelledby="img-model" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+						</div>
+						<div class="modal-body">
+
+							<div class="col col-lg-3 display-area d-flex justify-content-center" style="border: 1px solid blue; height: 200px;">
+								<img class="h-100" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($thumbnail['image']); ?>" />
+							</div>
+
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+							<button type="button" class="btn btn-primary">Save changes</button>
+						</div>
+					</div>
+				</div>
+			</div> -->
 
 
 		</div>
@@ -186,6 +213,22 @@
 
 
 	<script src="./js/home.js"></script>
+
+
+	<script>
+		function load(id) {
+			console.log("trigred");
+			// var imgId = document.getElementsByClassName('show-img').getAttribute('id')
+			// console.log(id);
+
+			<?php 
+			$data['id'] = $id;
+			$this->load->view('imageview', $data);
+			?>
+
+
+		}
+	</script>
 </body>
 
 </html>

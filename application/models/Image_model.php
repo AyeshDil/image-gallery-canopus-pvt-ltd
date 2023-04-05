@@ -2,8 +2,9 @@
 
 class Image_model extends CI_Model
 {
-  
-  function save_upload($id, $file_data){
+
+  function save_upload($id, $file_data)
+  {
 
     $data = array(
       'property_id' => $id,
@@ -16,7 +17,8 @@ class Image_model extends CI_Model
   }
 
 
-  public function getImage(){
+  public function getImage()
+  {
     $input_user_id = $this->session->userdata('id');
 
     // $this->db->where('user_table_property_id', $input_user_id);
@@ -33,13 +35,44 @@ class Image_model extends CI_Model
     // echo $results;
     // print_r($results);
 
-  
 
-    // if ($results->num_rows()==1) {
-     return $results;
+
+    //if ($results->num_rows()==1) {
+    return $results;
     // }else {
-      // return false;
+    // return false;
     // }
   }
 
+
+  public function getByImageId($id)
+  {
+    $this->load->database();
+    $result = $this->db->get_where('image_table', array('property_id' => $id));
+
+  
+    //  = $query->result_array();
+
+    return $result->row(0);
+
+
+    // $this->db->where('property_id', $id);
+    // $response = $this->db->get('image_table');
+
+    // print_r($response);
+    // die();
+
+    // if ($response->num_rows() == 1) {
+    //   return $response;
+    // } else {
+    //   return false;
+    // }
+  }
+
+
+  public function deleteImageById($id){
+    $this->load->database();
+    $result = $this->db->delete('image_table', array('property_id' => $id));
+    return $result;
+  }
 }
