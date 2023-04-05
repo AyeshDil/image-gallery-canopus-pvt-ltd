@@ -25,7 +25,7 @@
 	<nav class="nav navbar-expand-lg bg-dark fixed-top rounded-bottom" id="small-nav" style="height: 75px;">
 		<div class="container " style="border: 1px solid blue;">
 			<span class=" p-2 d-flex flex-row-reverse" style="border: 1px solid green; ">
-			<a href="<?php echo base_url('index.php/Login/logoutUser') ?>">Logout</a>
+				<a href="<?php echo base_url('index.php/Login/logoutUser') ?>">Logout</a>
 				<a class="navbar-brand  m-2" href="#">
 					<img style="border-radius: 50%;" src="https://img.freepik.com/free-vector/colourful-illustration-programmer-working_23-2148281410.jpg?w=740&t=st=1680410983~exp=1680411583~hmac=c0014abfc6d9a9f2bc88761878b79d73f9a99fc9956560514674ec64fc9f1c74" alt="" width="40" height="40">
 				</a>
@@ -80,13 +80,44 @@
 
 			<!-- Upload btn area -->
 			<div class="row w-100 p-2 justify-content-center" style="border: 1px solid green;">
-				<button class="btn btn-primary w-25">
-					<i class="fa-solid fa-upload"></i>
-					Upload
-				</button>
+				<!-- <div class=" w-100 d-flex justify-content-center">
+					<button type="button" class="btn btn-primary w-25" data-bs-toggle="modal" data-bs-target="#upload-modal">
+						<i class="fa-solid fa-upload"></i>
+						Upload
+					</button>
+				</div> -->
+
+				<a href="<?php echo base_url('index.php/Upload'); ?>" class=" w-100 d-flex justify-content-center">
+					<button type="button" class="btn btn-primary w-25">
+						<i class="fa-solid fa-upload"></i>
+						Upload
+					</button>
+				</a>
+
 			</div>
 		</div>
 	</nav>
+
+	<!-- Upload modal -->
+	<!--<div class="modal fade" id="upload-modal" tabindex="-1" aria-labelledby="upload-modal-lable" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					
+				<?php include './upload.php'; ?>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+					<button type="button" class="btn btn-primary">Save changes</button>
+				</div>
+			</div>
+		</div>
+	</div>-->
 
 
 	<!-- pagination -->
@@ -113,6 +144,27 @@
 			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
 			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
 			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
+
+			<?php
+			// $this->load->collator('');
+
+			
+			foreach ($my_results as $row) {
+				echo '<div class="col col-lg-3 display-area d-flex justify-content-center" style="border: 1px solid blue; height: 200px;">
+				<img class="h-100" src="data:image/jpeg;base64,'.base64_encode($row['image']) .'" />
+				</div>';
+		}
+		
+
+
+
+
+			// foreach ($response as $display_data) {
+			// 	echo '<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;">' . $this->$display_data->image_data('image') . '</div>';
+			// }
+			?>
+
+
 		</div>
 
 		<div class="row"></div>
@@ -131,6 +183,7 @@
 	<!-- Bootstrap JS -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
 	<script src="https://kit.fontawesome.com/6b4fc80c6e.js" crossorigin="anonymous"></script>
+
 
 	<script src="./js/home.js"></script>
 </body>
