@@ -10,7 +10,7 @@ class User_model extends CI_Model
       'last_name' => $this->input->post('lname',TRUE),
       'user_name' => $this->input->post('uname',TRUE),
       'email' => $this->input->post('email',TRUE),
-      'password' => sha1($this->input->post('password',TRUE)),
+      'password' => sha1($this->input->post('password',TRUE)), 
     );
     return $this->db->insert('user_table', $data);
   }

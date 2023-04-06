@@ -53,32 +53,39 @@
 		<div class="container" style="border: 1px solid red; height: auto;">
 
 			<div class="row">
+			<?php echo form_open('Home/searchByCaptionOrID'); ?>
 				<div class="container d-flex p-2">
 					<div class="col col-lg-6 p-2" style="border: 1px solid blue; height: 50px;">
 						<!--Search by caption  -->
-					<input type="text" class="form-control h-100" id="search-caption" placeholder="Search by caption">
-
+					<input name="keyword" type="text" class="form-control h-100" id="search-caption" placeholder="Search by caption">
 
 					</div>
-					<div class="col col-lg-4 p-2" style="border: 1px solid blue; height: 50px;">
-						<div class="dropdown w-100 h-100">
-							<button class="btn btn-secondary dropdown-toggle w-100 h-100" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-								Tags
-							</button>
-							<ul class="dropdown-menu center w-100">
-								<li><a class="dropdown-item" href="#">Action</a></li>
-								<li><a class="dropdown-item" href="#">Another action</a></li>
-								<li><a class="dropdown-item" href="#">Something else here</a></li>
-							</ul>
-						</div>
-					</div>
+					
 					<div class="col col-lg-2 p-2 " style="border: 1px solid blue; height: 50px;">
-						<button class="btn btn-success w-100 h-100" type="button">
+					<a href="">
+						<button class="btn btn-success w-100 h-100" type="submit">
 							<i class="fa-solid fa-magnifying-glass"></i>
 							Search
 						</button>
+					</a>
+					</div>
+
+					<div class="col col-lg-4 p-2" style="border: 1px solid blue; height: 50px;">
+						<div class="dropdown w-100 h-100">
+							<a href="<?php echo base_url('index.php/Home'); ?>">
+							<button class="btn btn-secondary w-100 h-100" type="button">
+								Clear Search
+							</button>
+						</a>
+							<!-- <ul class="dropdown-menu center w-100">
+								<li><a class="dropdown-item" href="#">Action</a></li>
+								<li><a class="dropdown-item" href="#">Another action</a></li>
+								<li><a class="dropdown-item" href="#">Something else here</a></li>
+							</ul> -->
+						</div>
 					</div>
 				</div>
+				<?php echo form_close() ?>
 			</div>
 
 			<!-- Upload btn area -->
@@ -152,6 +159,7 @@
 
 
 			<?php foreach ($thumbnails as $thumbnail) : ?>
+				
 				<div class="col col-lg-3 display-area d-flex justify-content-center" style="border: 1px solid blue; height: 200px;">
 					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#img-model">
 						<a href="<?php echo base_url('index.php/Imageview/index/'.$thumbnail['id']); ?>">

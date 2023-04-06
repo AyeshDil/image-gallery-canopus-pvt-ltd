@@ -34,6 +34,7 @@ class Image_model extends CI_Model
 
     // echo $results;
     // print_r($results);
+    // die();
 
 
 
@@ -74,5 +75,27 @@ class Image_model extends CI_Model
     $this->load->database();
     $result = $this->db->delete('image_table', array('property_id' => $id));
     return $result;
+  }
+
+  public function searchImage(){
+    $this->load->database();
+    // $this->db->select('*');
+    $this->db->from('image_table');
+    $this->db->where('user_table_property_id', $this->session->userdata('id'));
+    $this->db->like('caption', $this->input->post('keyword'), 'both');
+    $this->db->or_like('tag', $this->input->post('keyword'), 'both');
+    // $this->db->query('SELECT * FROM image_table WHERE caption LIKE '%".$this->input->post('keyword')."%' OR tag LIKE '.$this->input->post('keyword').' AND user_table_property_id='.$this->session->userdata('id').'');
+
+    // $this->db->query('SELECT * FROM image_table WHERE caption LIKE "%'.$this->input->post('keyword').'%" OR tag LIKE "%'.$this->input->post('keyword').'%" AND user_table_property_id="'.$this->session->userdata('id').'"');
+    // print_r($this->db->get());
+    // die();
+    $query = $this->db->get();
+
+    
+    // $catch_data = $this->input->post('keyword',TRUE);
+    // print_r($catch_data);
+    // echo '<h1>'.$catch_data.'</h1>';
+    // die();
+    return $query->result_array();
   }
 }

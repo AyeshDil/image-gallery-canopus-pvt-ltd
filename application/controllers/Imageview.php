@@ -40,8 +40,6 @@ class Imageview extends CI_Controller {
 
   public function deleteImage($id)
   {
-    // Ask to confirm
-    echo '<script>alert("Your message here");</script>';
 
     $this->load->model('Image_model');
 		$response  = $this->Image_model->deleteImageById($id);
