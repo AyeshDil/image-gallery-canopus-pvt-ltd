@@ -18,6 +18,8 @@
 	if (!$this->session->userdata('logged_in')) {
 		redirect('login');
 	}
+
+	$pagination = $this->load->get_var('pagination');
 	?>
 
 
@@ -53,39 +55,42 @@
 		<div class="container" style="border: 1px solid red; height: auto;">
 
 			<div class="row">
-			<?php echo form_open('Home/searchByCaptionOrID'); ?>
-				<div class="container d-flex p-2">
-					<div class="col col-lg-6 p-2" style="border: 1px solid blue; height: 50px;">
-						<!--Search by caption  -->
-					<input name="keyword" type="text" class="form-control h-100" id="search-caption" placeholder="Search by caption">
 
-					</div>
-					
-					<div class="col col-lg-2 p-2 " style="border: 1px solid blue; height: 50px;">
-					<a href="">
-						<button class="btn btn-success w-100 h-100" type="submit">
-							<i class="fa-solid fa-magnifying-glass"></i>
-							Search
-						</button>
-					</a>
-					</div>
+				<form action="<?php echo base_url('index.php/Home/searchByCaptionOrID') ?>" method="get">
+					<div class="container d-flex p-2">
+						<div class="col col-lg-6 p-2" style="border: 1px solid blue; height: 50px;">
+							<!--Search by caption  -->
+							<input value="<?php if ($this->input->get('keyword')) {
+															echo $this->input->get('keyword');
+														} ?>" name="keyword" type="text" class="form-control h-100" id="keyword" placeholder="Search by caption">
 
-					<div class="col col-lg-4 p-2" style="border: 1px solid blue; height: 50px;">
-						<div class="dropdown w-100 h-100">
-							<a href="<?php echo base_url('index.php/Home'); ?>">
-							<button class="btn btn-secondary w-100 h-100" type="button">
-								Clear Search
-							</button>
-						</a>
-							<!-- <ul class="dropdown-menu center w-100">
+						</div>
+
+						<div class="col col-lg-2 p-2 " style="border: 1px solid blue; height: 50px;">
+							<a href="">
+								<button class="btn btn-success w-100 h-100" type="submit">
+									<i class="fa-solid fa-magnifying-glass"></i>
+									Search
+								</button>
+							</a>
+						</div>
+
+						<div class="col col-lg-4 p-2" style="border: 1px solid blue; height: 50px;">
+							<div class="dropdown w-100 h-100">
+								<a href="<?php echo base_url('index.php/Home'); ?>">
+									<button class="btn btn-secondary w-100 h-100" type="button">
+										Clear Search
+									</button>
+								</a>
+								<!-- <ul class="dropdown-menu center w-100">
 								<li><a class="dropdown-item" href="#">Action</a></li>
 								<li><a class="dropdown-item" href="#">Another action</a></li>
 								<li><a class="dropdown-item" href="#">Something else here</a></li>
 							</ul> -->
+							</div>
 						</div>
 					</div>
-				</div>
-				<?php echo form_close() ?>
+				</form>
 			</div>
 
 			<!-- Upload btn area -->
@@ -132,7 +137,7 @@
 
 	<!-- pagination -->
 	<div class="container mt-3">
-		<nav aria-label="Page navigation example ">
+		<nav aria-label="Page navigation  ">
 			<ul class="pagination justify-content-center">
 				<li class="page-item disabled">
 					<a class="page-link" href="#" tabindex="-1">Previous</a>
@@ -147,6 +152,15 @@
 		</nav>
 	</div>
 
+	<div class="row">
+		<div class="col col-lg-6">
+			<nav aria-label="Page navigation ">
+				<?php echo $pagination;
+				?>
+			</nav>
+		</div>
+	</div>
+
 	<!-- Image Section -->
 	<div class="container">
 		<div class="row" style="border: 1px solid red;">
@@ -159,14 +173,13 @@
 
 
 			<?php foreach ($thumbnails as $thumbnail) : ?>
-				
+
 				<div class="col col-lg-3 display-area d-flex justify-content-center" style="border: 1px solid blue; height: 200px;">
 					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#img-model">
-						<a href="<?php echo base_url('index.php/Imageview/index/'.$thumbnail['id']); ?>">
-						<img onclick="load('<?php echo $thumbnail['id']; ?>');" id="<?php echo $thumbnail['id']; ?>" class="h-100 show-img" 
-						src="<?php echo 'data:image/jpeg;base64,' . base64_encode($thumbnail['image']); ?>" />
-					</a>
-				</button>
+						<a href="<?php echo base_url('index.php/Imageview/index/' . $thumbnail['id']); ?>">
+							<img onclick="load('<?php echo $thumbnail['id']; ?>');" id="<?php echo $thumbnail['id']; ?>" class="h-100 show-img" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($thumbnail['image']); ?>" />
+						</a>
+					</button>
 				</div>
 			<?php endforeach; ?>
 
@@ -229,7 +242,7 @@
 			// var imgId = document.getElementsByClassName('show-img').getAttribute('id')
 			// console.log(id);
 
-			<?php 
+			<?php
 			$data['id'] = $id;
 			$this->load->view('imageview', $data);
 			?>
