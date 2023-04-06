@@ -2,7 +2,7 @@
 
 class Image_model extends CI_Model
 {
-  
+
   function save_upload($id, $file_data)
   {
 
@@ -11,7 +11,8 @@ class Image_model extends CI_Model
       'caption' => $this->input->post('caption'),
       'tag' => $this->input->post('tags'),
       'image' => file_get_contents($file_data['full_path']),
-      'user_table_property_id' => $this->session->userdata('id')
+      'user_table_property_id' => $this->session->userdata('id'),
+      'date_time' => date("Y-m-d h:i:sa")
     );
     return $this->db->insert('image_table', $data);
   }
@@ -25,13 +26,22 @@ class Image_model extends CI_Model
 
     // $response = $this->db->get('image_table');
 
+    // all done part
+    // $this->load->database();
+    // $this->db->limit($per_page, $offset);
+    // $query = $this->db->get_where('image_table', array('user_table_property_id' => $input_user_id));
+
+    // $results = $query->result_array();
+
+    // ...all done part
+
 
     $this->load->database();
     $this->db->limit($per_page, $offset);
+    $this->db->order_by("date_time", "desc");
     $query = $this->db->get_where('image_table', array('user_table_property_id' => $input_user_id));
 
     $results = $query->result_array();
-
 
     // echo $results;
     // print_r($results);
@@ -93,32 +103,36 @@ class Image_model extends CI_Model
     //   print_r("kela unoooo");
     //   die();
     // } else {
-      // $this->db->from('image_table');
+    // $this->db->from('image_table');
 
     //   $my = $this->uri->segment('3');
 
-		// print_r($my);
-		// die();
+    // print_r($my);
+    // die();
 
-      // $searchT = $this->session->userdata('search_query'); ......
+    // $searchT = $this->session->userdata('search_query'); ......
     //   print_r($this->input->get('keyword'));
-		// die();
+    // die();
 
     $parameters = $this->input->get('keyword');
 
-      $this->db->limit($per_page, $offset);
-      $this->db->like('caption', $parameters, 'both');
-      $this->db->or_like('tag', $parameters, 'both');
-      
-      // $query = $this->db->get_where('image_table', array('user_table_property_id' => $this->session->userdata('id')));
-      $query = $this->db->get('image_table');
+    // $input_user_id = $this->session->userdata('id')
 
-      // $this->session->set_userdata('search_query', $query->result_array()); ........
+    $this->db->limit($per_page, $offset);
+    $this->db->where('user_table_property_id', $this->session->userdata('id'));
+    $this->db->order_by("date_time", "desc");
+    $this->db->like('caption', $parameters, 'both');
+    $this->db->or_like('tag', $parameters, 'both');
 
-      // $sql = "select * from image_table where user_table_property_id='".$this->session->userdata('id')."' and (caption like '%".$_SESSION['search_keyword']."%' or tag like '%".$_SESSION['search_keyword']."%') ;";
-      // $query = $this->db->query($sql);
-      // $query = $this->db->get();
-      return $query->result_array();
+    $query = $this->db->get_where('image_table', array('user_table_property_id' => $this->session->userdata('id')));
+    // $query = $this->db->get('image_table');
+
+    // $this->session->set_userdata('search_query', $query->result_array()); ........
+
+    // $sql = "select * from image_table where user_table_property_id='".$this->session->userdata('id')."' and (caption like '%".$_SESSION['search_keyword']."%' or tag like '%".$_SESSION['search_keyword']."%') ;";
+    // $query = $this->db->query($sql);
+    // $query = $this->db->get();
+    return $query->result_array();
     // }
 
     // $this->db->query('SELECT * FROM image_table WHERE caption LIKE '%".$this->input->post('keyword')."%' OR tag LIKE '.$this->input->post('keyword').' AND user_table_property_id='.$this->session->userdata('id').'');

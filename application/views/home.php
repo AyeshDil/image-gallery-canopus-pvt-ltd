@@ -11,7 +11,7 @@
 	<link rel="stylesheet" href="./style/home.css">
 </head>
 
-<body>
+<body style="background-color: #F1F0EA;">
 
 	<!-- Disable Url routing and redirect to the login page-->
 	<?php
@@ -23,41 +23,57 @@
 	?>
 
 
-	<!-- Scroll nav -->
-	<nav class="nav navbar-expand-lg bg-dark fixed-top rounded-bottom" id="small-nav" style="height: 75px;">
+	<!-- Fixed nav -->
+	<nav class="nav navbar-expand-lg  fixed-top rounded-bottom" id="small-nav" style="height: 75px; background-color: #474448;">
 		<div class="container " style="border: 1px solid blue;">
 			<span class=" p-2 d-flex flex-row-reverse" style="border: 1px solid green; ">
-				<a href="<?php echo base_url('index.php/Login/logoutUser') ?>">Logout</a>
+
 				<a class="navbar-brand  m-2" href="#">
-					<img style="border-radius: 50%;" src="https://img.freepik.com/free-vector/colourful-illustration-programmer-working_23-2148281410.jpg?w=740&t=st=1680410983~exp=1680411583~hmac=c0014abfc6d9a9f2bc88761878b79d73f9a99fc9956560514674ec64fc9f1c74" alt="" width="40" height="40">
+					<img style="border-radius: 50%;" 
+					src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" 
+					alt="user basic profile picture" 
+					width="40" height="40">
 				</a>
 				<!-- user Name -->
-				<div class="d-flex align-items-center mt-3">
+				<div class="d-flex align-items-center mt-2">
 					<p style="color: white;">
 						<?php echo $this->session->userdata('fname') ?>
 					</p>
 				</div>
+				<a data-bs-toggle="modal" data-bs-target="#logout_modal" class="nav-link" href="">
+					<button class="btn btn-danger m-2" type="button">
+						<i class="fa fa-sign-out" aria-hidden="true"></i>
+					</button>
+				</a>
 
-				<button class="btn btn-success m-2" type="button">
-					<i class="fa-solid fa-magnifying-glass"></i>
-				</button>
-				<button class="btn btn-primary m-2">
-					<i class="fa-solid fa-upload"></i>
-				</button>
+
+
+				<a class="nav-link" href="#search">
+					<button class="btn btn-success m-2" type="button">
+						<i class="fa-solid fa-magnifying-glass"></i>
+					</button>
+				</a>
+
+				<a class="nav-link" href="<?php echo base_url('index.php/Upload'); ?>">
+					<button class="btn btn-primary m-2">
+						<i class="fa-solid fa-upload"></i>
+					</button>
+				</a>
+
 			</span>
 		</div>
 	</nav>
 
-	<div class="bg-dark" style="height: 75px;"></div>
+	<div id="search" class="bg-dark" style="height: 75px; background-color: #474448;" data-bs-spy="scroll" data-bs-target="#search" data-bs-root-margin="0px 0px -40%" data-bs-smooth-scroll="true"></div>
 
 	<!-- second nav -->
-	<nav class="bg-dark p-3 sub-nav-bar d-none d-lg-block rounded-bottom">
+	<nav class="p-3 sub-nav-bar d-none d-lg-block rounded-bottom" style="background-color: #474448;">
 		<div class="container" style="border: 1px solid red; height: auto;">
 
 			<div class="row">
 
 				<form action="<?php echo base_url('index.php/Home/searchByCaptionOrID') ?>" method="get">
-					<div class="container d-flex p-2">
+					<div class="container d-flex p-2 col-lg-8">
 						<div class="col col-lg-6 p-2" style="border: 1px solid blue; height: 50px;">
 							<!--Search by caption  -->
 							<input value="<?php if ($this->input->get('keyword')) {
@@ -113,61 +129,49 @@
 		</div>
 	</nav>
 
-	<!-- Upload modal -->
-	<!--<div class="modal fade" id="upload-modal" tabindex="-1" aria-labelledby="upload-modal-lable" aria-hidden="true">
+	<!-- LogOut Confirmation Modal -->
+	<div class="modal fade" id="logout_modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+					<h1 class="modal-title fs-5" id="exampleModalLabel">LogOut</h1>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body">
-					
-				<?php include './upload.php'; ?>
-
+					Are you sure you want to logout?
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+					<a href="<?php echo base_url('index.php/Login/logoutUser') ?>">
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Yes</button>
+					</a>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No</button>
 				</div>
 			</div>
 		</div>
-	</div>-->
+	</div>
 
 
 	<!-- pagination -->
 	<div class="container mt-3">
-		<nav aria-label="Page navigation  ">
-			<ul class="pagination justify-content-center">
-				<li class="page-item disabled">
-					<a class="page-link" href="#" tabindex="-1">Previous</a>
-				</li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item">
-					<a class="page-link" href="#">Next</a>
-				</li>
-			</ul>
-		</nav>
-	</div>
-
-	<div class="row">
-		<div class="col col-lg-6">
-			<nav aria-label="Page navigation ">
-				<?php echo $pagination;
-				?>
-			</nav>
+		<div class="row">
+			<div class="col col-lg-12">
+				<nav aria-label="Page navigation ">
+					<?php echo $pagination;
+					?>
+				</nav>
+			</div>
 		</div>
 	</div>
+
+
 
 	<!-- Image Section -->
 	<div class="container">
 		<div class="row" style="border: 1px solid red;">
+			<!-- <div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
 			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
 			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
-			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
-			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
+			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div> -->
 
 
 
@@ -175,7 +179,7 @@
 			<?php foreach ($thumbnails as $thumbnail) : ?>
 
 				<div class="col col-lg-3 display-area d-flex justify-content-center" style="border: 1px solid blue; height: 200px;">
-					<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#img-model">
+					<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#img-model">
 						<a href="<?php echo base_url('index.php/Imageview/index/' . $thumbnail['id']); ?>">
 							<img onclick="load('<?php echo $thumbnail['id']; ?>');" id="<?php echo $thumbnail['id']; ?>" class="h-100 show-img" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($thumbnail['image']); ?>" />
 						</a>
@@ -183,47 +187,11 @@
 				</div>
 			<?php endforeach; ?>
 
-
-			<!-- Button trigger modal -->
-
-
-			<!-- Modal -->
-			<!-- <div id="mod"></div>
-
-			<div class="modal fade" id="" tabindex="-1" aria-labelledby="img-model" aria-hidden="true">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
-							<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-						</div>
-						<div class="modal-body">
-
-							<div class="col col-lg-3 display-area d-flex justify-content-center" style="border: 1px solid blue; height: 200px;">
-								<img class="h-100" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($thumbnail['image']); ?>" />
-							</div>
-
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-primary">Save changes</button>
-						</div>
-					</div>
-				</div>
-			</div> -->
-
-
 		</div>
-
-		<div class="row"></div>
-		<div class="row"></div>
-		<div class="row"></div>
-		<div class="row"></div>
-
 	</div>
-	<div style="height: 500px;">
 
-	</div>
+	<!-- Extra Space -->
+	<div style="height: 700px;"></div>
 
 
 
@@ -241,14 +209,15 @@
 			console.log("trigred");
 			// var imgId = document.getElementsByClassName('show-img').getAttribute('id')
 			// console.log(id);
-
 			<?php
 			$data['id'] = $id;
 			$this->load->view('imageview', $data);
 			?>
-
-
 		}
+
+		$(function() {
+			$('[data-bs-toggle="tooltip"]').tooltip()
+		})
 	</script>
 </body>
 

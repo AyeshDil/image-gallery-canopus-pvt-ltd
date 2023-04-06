@@ -8,61 +8,68 @@
   <title>Image Upload</title>
 
   <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
-<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-<script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
+  <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+  <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js"></script>
 
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+
+     <!-- font -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 
-<body>
-  <div style="border: 1px solid red;">
+<body style="background-color: #F1F0EA; font-family: 'Roboto', sans-serif;">
+  <div  class="mt-5">
 
- 
-  <?php echo form_open_multipart('upload/do_upload');?>
 
-      <div class="container">
+    <?php echo form_open_multipart('upload/do_upload'); ?>
+
+    <div class="container d-flex justify-content-center" >
+      <div style=" background-color: #474448; color: white; border-radius: 30px;" class="col-lg-6 m-5 p-5">
         <div class="row">
-          <h1>Upload Your Photo</h1>
-        </div>
-        <div class="row">
-          <div class="col col-lg-6">
+          <h1 class="text-center">Upload Your Photo</h1>
+        
+          <div class="col col-lg-12 mt-3" >
             <div class="input-group mb-3">
               <input name="uploadedfile" onchange="loadImg(this);" type="file" class="form-control" id="inputGroupFile02">
             </div>
-            <div>
-              <img src="#" alt="" id="selected-img">
-            </div>
           </div>
-
-        </div>
-        <div class="row">
-          <div class="col col-lg-6">
+          <br>
+        
+          <div class="col col-lg-12">
             <div class="mb-3">
               <label for="caption" class="form-label">Caption</label>
-              <textarea name="caption" class="form-control" id="caption" rows="3"></textarea>
+              <textarea name="caption" class="form-control" id="caption" rows="3" placeholder="Type your caption..."></textarea>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col col-lg-6">
+        
+          <div class="col col-lg-12">
             <div class="mb-3">
               <label for="tags" class="form-label">Tags</label>
               <textarea name="tags" class="form-control" id="tags" rows="2" placeholder="Car, Audi, SUV"></textarea>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col col-lg-12">
-            <button type="submit" class="btn btn-primary w-25">
+        
+          <div class="col col-lg-12 d-flex justify-content-center mt-4" >
+          <a href="javascript:history.back()">
+              <button type="button" class="btn btn-success">
+               < BACK
+              </button>
+            </a>  
+          &nbsp; &nbsp;
+          <button type="submit" class="btn btn-primary w-50">
               <i class="fa-solid fa-upload"></i>
               Upload
             </button>
           </div>
         </div>
       </div>
+    </div>
 
-    
+
 
   </div>
   </form>

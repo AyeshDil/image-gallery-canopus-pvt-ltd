@@ -8,33 +8,55 @@
   <title>User Loging</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+
+  <!-- font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 
-<body>
+<body style="background-color: #F1F0EA; font-family: 'Roboto', sans-serif;">
 
-  <div class="container">
-    <div class="row">
-      <div class="col col-lg-12 display-area d-flex justify-content-center" style="border:1px solid red;">
-        <img style="width: 400px; height: auto;" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($img_data['image']); ?>" alt="">
-      </div>
-    </div>
-    <div class="row">
-      <div style="border:1px solid red;">
-        <p><?php echo $img_data['caption'] ?></p>
-      </div>
-    </div>
-    <div class="row">
-      <div style="border:1px solid red;">
-        <p><?php echo $img_data['tags'] ?></p>
-      </div>
-    </div>
-    <div class="row">
-      <div style="border:1px solid red;">
-        <!-- <button type="button" class="btn btn-primary" data-bs-toggle="delete-model" data-bs-target="#delete-model">DELETE</button> -->
-        <!-- </a> -->
-        <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_modal">
-          DELETE 
-        </button>
+
+  <div style="border:1px solid blue; " class="text-center">
+    <div class="container mt-5 d-flex justify-content-center">
+      <div style="background-color: #474448; color: white; border-radius: 30px;" class="p-5">
+        <div class="row">
+          <div class="col col-lg-12 d-flex justify-content-center" style="">
+            <img style="width: 400px; height: auto; border: 2px solid white; border-radius: 30px;" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($img_data['image']); ?>" alt="">
+          </div>
+        </div>
+        <div class="row">
+          <div style="" class="d-flex justify-content-center mt-3">
+            <h5>Caption: </h5> &nbsp;&nbsp;
+            <p><?php echo $img_data['caption'] ?></p>
+          </div>
+        </div>
+        <div class="row">
+          <div style="" class="d-flex justify-content-center mt-3">
+            <h5>Tags: </h5> &nbsp;&nbsp;
+            <p> <?php echo $img_data['tags'] ?></p>
+          </div>
+        </div>
+        <div class="row">
+          <div style="" class="d-flex justify-content-end mt-3">
+            <!-- <button type="button" class="btn btn-primary" data-bs-toggle="delete-model" data-bs-target="#delete-model">DELETE</button> -->
+            <!-- </a> -->
+            <a href="javascript:history.back()">
+              <button type="button" class="btn btn-success">
+                BACK
+              </button>
+            </a>
+
+
+
+            &nbsp; &nbsp;
+            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#delete_modal">
+              DELETE
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </div>

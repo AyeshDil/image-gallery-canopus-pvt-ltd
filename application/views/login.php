@@ -8,27 +8,33 @@
   <title>User Loging</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+
+   <!-- font -->
+   <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 
-<body>
+<body style="background-color: #F1F0EA; font-family: 'Roboto', sans-serif;">
 
-  <section style="border: 1px solid red; height: 100vh;">
-    <div class="container mt-5" style="border: 1px solid red;">
-      <div class="row m-3">
+  <section class="p-5" style="border: 0 solid blue; ">
+    <div class="container mt-5" style=" border-radius: 30px; background-color: #474448;">
+      <div class="row ">
 
         <!-- image -->
-        <div class="col col-lg-6" style="border: 1px solid blue; height: 75vh;">
-          <img style="width: 100%; height: 100%; object-fit: cover;" src="https://cdn.pixabay.com/photo/2017/03/22/21/12/images-2166471_960_720.jpg" alt="">
+        <div class="col col-lg-6 mt-3 mb-3" style="">
+          <img style="width: 100%; height: 100%; object-fit: cover; border-radius: 30px 0 0 30px;" src="https://cdn.pixabay.com/photo/2017/03/22/21/12/images-2166471_960_720.jpg" alt="">
         </div>
 
         <!-- login form -->
-        <div class="col col-lg-6 row align-items-center" style="border: 1px solid blue; height: 75vh;">
+        <div class="col col-lg-6 row align-items-center" style="height: 75vh; color: white;">
 
           <?php echo validation_errors(); ?>
           <?php echo form_open('Login/loginUser'); ?>
 
           <div class="d-flex justify-content-center">
-            <h1>Login</h1>
+            <h1 style="letter-spacing: 3px; ">Login</h1>
           </div>
 
           <?php
@@ -39,50 +45,48 @@
               $this->session->flashdata('sucecess')
               . '</div>
                 ';
-          } elseif($this->session->flashdata('error')){
+          } elseif ($this->session->flashdata('error')) {
             echo '
             <div class="alert alert-danger" role="alert">
             <i class="fa-solid fa-circle-info"></i> &nbsp' .
-        $this->session->flashdata('error')
-        . '</div>
+              $this->session->flashdata('error')
+              . '</div>
           ';
           }
           ?>
 
           <div class="mt-3">
-            <label for="email" class="form-label "><strong>Email address</strong> </label>
+            <label for="email" class="form-label ">Email address</label>
             <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
-            <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+            <div id="emailHelp" class="form-text" ><p style="color: white;">We'll never share your email with anyone else.</p> </div>
           </div>
           <div class="mt-3">
-            <label for="password" class="form-label"><strong>Password</strong> </label>
+            <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" name="password">
           </div>
           <div class="mt-3 d-flex justify-content-center col-12">
-            <button type="submit" class="btn btn-dark w-100">LOGIN</button>
+            <button type="submit" class="btn btn-dark w-100" style="background-color: black;">LOGIN</button>
           </div>
           <div>
-            <a class="small text-muted" href="#!">
-              Forgot password?
+            <a class="small text-muted mt-2" href="#!" style="color: whitesmoke;">
+              <p style="color: white;">Forgot password?</p> 
             </a>
-            <p style="color: #393f81;">Don't have an account?
-              <a href="<?php echo base_url('index.php/Register'); ?>" style="color: #393f81;">
+            <p style="color: white;">Don't have an account?
+              <a href="<?php echo base_url('index.php/Register'); ?>" style="color: #F1F0EA;">
                 Register here
               </a>
             </p>
             <div class="d-flex justify-content-end">
-              <a href="#!" class="small text-muted">
-                Terms of use.
-              </a>
-              <a href="#!" class="small text-muted">
-                Privacy policy
+              <a href="#!" class="small " style="color: white;"> 
+                <p>Terms of use.</p> 
+              </a> &nbsp;
+              <a href="#!" class="small " style="color: white;">
+              <p>Privacy policy</p>
               </a>
             </div>
-
           </div>
-          <?php echo form_close() ?>
+          <?php echo form_close(); ?>
         </div>
-
       </div>
     </div>
   </section>
