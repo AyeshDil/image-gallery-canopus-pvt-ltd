@@ -70,7 +70,7 @@ class Home extends CI_Controller
 
 
 		// $total_row = $modelMethod;
-		$per_page = 2;
+		$per_page = 12;
 		$curr_page = 0;
 
 		if (isset($page) && trim($page) != "") {

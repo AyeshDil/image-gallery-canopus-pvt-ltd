@@ -9,9 +9,14 @@
 	<!-- Bootstrap CSS -->
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 	<link rel="stylesheet" href="./style/home.css">
+	<!-- font -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+
 </head>
 
-<body style="background-color: #F1F0EA;">
+<body style="background-color: #F1F0EA; font-family: 'Roboto', sans-serif;">
 
 	<!-- Disable Url routing and redirect to the login page-->
 	<?php
@@ -26,41 +31,45 @@
 	<!-- Fixed nav -->
 	<nav class="nav navbar-expand-lg  fixed-top rounded-bottom" id="small-nav" style="height: 75px; background-color: #474448;">
 		<div class="container " style="border: 1px solid blue;">
-			<span class=" p-2 d-flex flex-row-reverse" style="border: 1px solid green; ">
+			<div class="row align-items-center">
 
-				<a class="navbar-brand  m-2" href="#">
-					<img style="border-radius: 50%;" 
-					src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" 
-					alt="user basic profile picture" 
-					width="40" height="40">
-				</a>
-				<!-- user Name -->
-				<div class="d-flex align-items-center mt-2">
-					<p style="color: white;">
-						<?php echo $this->session->userdata('fname') ?>
-					</p>
+
+				<div class="col col-lg-6 align-items-center" style="color: #F1F0EA; font-family: 'Montserrat', sans-serif;">
+					<h1 class="align-items-center mt-2" style="border: 1px solid red;">Image Gallery</h1>
 				</div>
-				<a data-bs-toggle="modal" data-bs-target="#logout_modal" class="nav-link" href="">
-					<button class="btn btn-danger m-2" type="button">
-						<i class="fa fa-sign-out" aria-hidden="true"></i>
-					</button>
-				</a>
+				<div class="col col-lg-6 align-items-center d-flex flex-row-reverse" style="border: 1px solid green; ">
+
+					<a class="navbar-brand  m-2" href="#">
+						<img style="border-radius: 50%;" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" alt="user basic profile picture" width="40" height="40">
+					</a>
+					<!-- user Name -->
+					<div class="d-flex align-items-center mt-3">
+						<p style="color: white;">
+							<?php echo $this->session->userdata('fname') ?>
+						</p>
+					</div>
+					<a style="padding: 0;" data-bs-toggle="modal" data-bs-target="#logout_modal" class="nav-link" href="">
+						<button class="btn btn-danger m-2" type="button" >
+							<i class="fa fa-sign-out" aria-hidden="true"></i>
+						</button>
+					</a>
 
 
 
-				<a class="nav-link" href="#search">
-					<button class="btn btn-success m-2" type="button">
-						<i class="fa-solid fa-magnifying-glass"></i>
-					</button>
-				</a>
+					<a class="nav-link" href="#search" style="padding: 0;">
+						<button class="btn btn-success m-2" type="button">
+							<i class="fa-solid fa-magnifying-glass"></i>
+						</button>
+					</a>
 
-				<a class="nav-link" href="<?php echo base_url('index.php/Upload'); ?>">
-					<button class="btn btn-primary m-2">
-						<i class="fa-solid fa-upload"></i>
-					</button>
-				</a>
+					<a class="nav-link" href="<?php echo base_url('index.php/Upload'); ?>" style="padding: 0;">
+						<button class="btn btn-primary m-2">
+							<i class="fa-solid fa-upload"></i>
+						</button>
+					</a>
 
-			</span>
+				</div>
+			</div>
 		</div>
 	</nav>
 
@@ -166,7 +175,7 @@
 
 
 	<!-- Image Section -->
-	<div class="container">
+	<div class="container mb-2">
 		<div class="row" style="border: 1px solid red;">
 			<!-- <div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
 			<div class="col col-lg-3" style="border: 1px solid blue; height: 200px;"></div>
@@ -178,12 +187,12 @@
 
 			<?php foreach ($thumbnails as $thumbnail) : ?>
 
-				<div class="col col-lg-3 display-area d-flex justify-content-center" style="border: 1px solid blue; height: 200px;">
-					<button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#img-model">
+				<div class="col col-lg-3 display-area d-flex justify-content-center my-2" style="border: 1px solid blue; height: 200px; ">
+					<!-- <button type="button" class="btn" > -->
 						<a href="<?php echo base_url('index.php/Imageview/index/' . $thumbnail['id']); ?>">
-							<img onclick="load('<?php echo $thumbnail['id']; ?>');" id="<?php echo $thumbnail['id']; ?>" class="h-100 show-img" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($thumbnail['image']); ?>" />
+							<img  id="<?php echo $thumbnail['id']; ?>" class="h-100 show-img" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($thumbnail['image']); ?>" />
 						</a>
-					</button>
+					<!-- </button> -->
 				</div>
 			<?php endforeach; ?>
 
@@ -191,9 +200,15 @@
 	</div>
 
 	<!-- Extra Space -->
-	<div style="height: 700px;"></div>
+	<!-- <div style="height: 700px;"></div> -->
 
 
+<!-- Footer -->
+	<div style="background-color: #474448; height: 50px; color: #F1F0EA;">
+				<div class="container d-flex justify-content-center">
+					<p class="mt-2">Site developed by: <a href="mailto:dilshanwma@gmail.com" style="color: whitesmoke;">W. M. Ayesh Dilshan</a></p>
+				</div>
+</div>
 
 
 	<!-- Bootstrap JS -->
@@ -204,21 +219,7 @@
 	<script src="./js/home.js"></script>
 
 
-	<script>
-		function load(id) {
-			console.log("trigred");
-			// var imgId = document.getElementsByClassName('show-img').getAttribute('id')
-			// console.log(id);
-			<?php
-			$data['id'] = $id;
-			$this->load->view('imageview', $data);
-			?>
-		}
-
-		$(function() {
-			$('[data-bs-toggle="tooltip"]').tooltip()
-		})
-	</script>
+	
 </body>
 
 </html>

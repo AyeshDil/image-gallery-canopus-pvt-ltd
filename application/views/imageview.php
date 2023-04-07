@@ -17,24 +17,28 @@
 </head>
 
 <body style="background-color: #F1F0EA; font-family: 'Roboto', sans-serif;">
-
+<?php
+	if (!$this->session->userdata('logged_in')) {
+		redirect('login');
+	}
+  ?>
 
   <div style="border:1px solid blue; " class="text-center">
     <div class="container mt-5 d-flex justify-content-center">
-      <div style="background-color: #474448; color: white; border-radius: 30px;" class="p-5">
+      <div style="background-color: #474448; color: white; border-radius: 30px;" class="p-2">
         <div class="row">
           <div class="col col-lg-12 d-flex justify-content-center" style="">
-            <img style="width: 400px; height: auto; border: 2px solid white; border-radius: 30px;" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($img_data['image']); ?>" alt="">
+            <img style="width: 500px; height: auto; border: 2px solid white; border-radius: 30px;" src="<?php echo 'data:image/jpeg;base64,' . base64_encode($img_data['image']); ?>" alt="">
           </div>
         </div>
         <div class="row">
-          <div style="" class="d-flex justify-content-center mt-3">
+          <div style="max-width: 500px;" class="d-flex justify-content-center mt-3">
             <h5>Caption: </h5> &nbsp;&nbsp;
             <p><?php echo $img_data['caption'] ?></p>
           </div>
         </div>
         <div class="row">
-          <div style="" class="d-flex justify-content-center mt-3">
+          <div style="max-width: 500px;" class="d-flex justify-content-center">
             <h5>Tags: </h5> &nbsp;&nbsp;
             <p> <?php echo $img_data['tags'] ?></p>
           </div>
@@ -45,7 +49,7 @@
             <!-- </a> -->
             <a href="javascript:history.back()">
               <button type="button" class="btn btn-success">
-                BACK
+                < BACK
               </button>
             </a>
 

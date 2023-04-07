@@ -13,10 +13,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
 </head>
 
-<body style="background-color: #F1F0EA; font-family: 'Roboto', sans-serif;">
+<body style="background-color: #F1F0EA; font-family: 'Montserrat', sans-serif;">
 
   <section style=" " class="p-5">
     <div class="container mt-5" style="">
@@ -32,7 +32,7 @@
 
               <!-- <form method="post" action=""> -->
               <div class="d-flex justify-content-center">
-                <h1 style="letter-spacing: 3px; ">Register</h1>
+                <h1 style="" >Register</h1>
               </div>
 
               <?php
@@ -48,33 +48,33 @@
 
               <div class="row mt-3">
                 <div class="col col-lg-6">
-                  <label for="fname" class="form-label ">First Name </label>
+                  <label for="fname" class="form-label ">First Name </label>&nbsp;<span style="color:red">*</span>
                   <input type="text" class="form-control" id="fname" name="fname">
                 </div>
                 <div class="col col-lg-6">
-                  <label for="lame" class="form-label ">Last Name</label>
+                  <label for="lame" class="form-label ">Last Name</label>&nbsp;<span style="color:red">*</span>
                   <input type="text" class="form-control" id="lname" name="lname">
                 </div>
               </div>
 
 
               <div class="mt-2">
-                <label for="uname" class="form-label ">User Name </label>
+                <label for="uname" class="form-label ">User Name </label>&nbsp;<span style="color:red">*</span>
                 <input type="text" class="form-control" id="uname" name="uname">
               </div>
 
               <div class="mt-2">
-                <label for="email" class="form-label ">Email address </label>
+                <label for="email" class="form-label ">Email address </label>&nbsp;<span style="color:red">*</span>
                 <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp">
               </div>
 
               <div class="row mt-2">
                 <div class="col col-lg-6">
-                  <label for="password" class="form-label">Password</label>
+                  <label for="password" class="form-label">Password</label>&nbsp;<span style="color:red">*</span>
                   <input type="password" class="form-control" id="password" name="password">
                 </div>
                 <div class="col col-lg-6">
-                  <label for="confpassword" class="form-label">Confirm Password</label>
+                  <label for="confpassword" class="form-label">Confirm Password</label>&nbsp;<span style="color:red">*</span>
                   <input type="password" class="form-control" id="confpassword" name="confpassword">
                 </div>
               </div>
@@ -98,7 +98,7 @@
         </div>
 
         <!-- image -->
-        <div class="col col-lg-6 mt-2 mb-2" style="">
+        <div class="col col-lg-6 p-0" style="">
           <img style="width: 100%; height: 100%; object-fit: cover; border-radius: 0 30px 30px 0;" 
           src="https://images.pexels.com/photos/69903/pexels-photo-69903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
         </div>

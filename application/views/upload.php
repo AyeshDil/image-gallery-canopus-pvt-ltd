@@ -22,7 +22,14 @@
 </head>
 
 <body style="background-color: #F1F0EA; font-family: 'Roboto', sans-serif;">
-  <div  class="mt-5">
+<?php
+	if (!$this->session->userdata('logged_in')) {
+		redirect('login');
+	}
+  ?>  
+
+
+<div  class="mt-5">
 
 
     <?php echo form_open_multipart('upload/do_upload'); ?>

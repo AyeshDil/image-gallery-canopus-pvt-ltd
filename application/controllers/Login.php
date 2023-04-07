@@ -30,7 +30,7 @@ class Login extends CI_Controller {
 					'email' => $response->email,
 					'password' => $response->password,
 					'logged_in' => TRUE,
-					'search_keyword' => "AYEsh"
+					'search_keyword' => "search"
 				);
 
 				$this->session->set_userdata($user_data);
