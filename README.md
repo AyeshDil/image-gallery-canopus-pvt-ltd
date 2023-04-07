@@ -1,7 +1,8 @@
 # image-gallery-canopus-pvt-ltd
 Image gallery application using the CodeIgniter framework
 
-##Image Gallery Project Summary
+## Image Gallery Project Summary
+
 This is a simple image gallery application developed using the CodeIgniter framework. The application allows users to upload images to the server and view them on a home page. The images are stored in a MySQL database.
 The home page of the application displays all the uploaded images in a grid layout using the Bootstrap framework. Users can also search for images by caption or tags using a search bar and search button.
 The application features pagination to improve performance when displaying large numbers of images. The pagination feature allows users to browse through the images in a controlled manner, with each page displaying a limited number of images.
