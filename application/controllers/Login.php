@@ -16,12 +16,10 @@ class Login extends CI_Controller {
 		if ($this->form_validation->run() == FALSE) {
 			$this->load->view('login');
 		} else {
-		
 			$this->load->model('User_model');
 			$response = $this->User_model->checkUserData();
 
 			if ($response != false) {
-				
 				$user_data = array(
 					'id' => $response->property_id,
 					'fname' => $response->first_name,
@@ -32,18 +30,14 @@ class Login extends CI_Controller {
 					'logged_in' => TRUE,
 					'search_keyword' => "search"
 				);
-
 				$this->session->set_userdata($user_data);
 				redirect('home');
-
 			} else {
 				$this->session->set_flashdata('error', 'Wrong email and password!');
 				redirect('login');
 			}
-
 		}
 	}
-
 
 	function logoutUser(){
 			$this->session->unset_userdata('id');

@@ -7,7 +7,6 @@ class Home extends CI_Controller
 	public function index()
 	{
 		$this->loadImage($page = "");
-		// $this->load->view('home');
 	}
 
 	public function loadImage($page = "")
@@ -20,56 +19,18 @@ class Home extends CI_Controller
 
 		$response_from_model = $this->getPaginate($page, $total_row, $baseUrl, $typeOfGet);
 
-		// ==========================================
-
-		// hear code have belowww 
-
-
 		$response = $this->getImg($response_from_model);
-		// print_r($total_row);
-		// 			die();
 
 		// Pass the thumbnail filenames to the view
 		$data['thumbnails'] = $response;
 		$this->load->view('home', $data);
 
-		// ================================================================
-
-		// =====================================
-
-		// $data['my_results'] = $image_array;
-		// $this->load->view('home', $data);
-
-
-
-		// foreach ($response as $row) {
-		// 	
-		// }
-
-
-		// $display_data = array();
-
-		// if ($response != false) {
-		// 	foreach ($response->result() as $row) {
-		// 		$image_data = array(
-		// 			'id' => $row->property_id,
-		// 			'caption' => $row->caption,
-		// 			'tags' => $row->tag,
-		// 			'image' => $row->image
-		// 		);
-		// 		array_push($image_data);
-		// 	}
-		// 	return$display_data;
-		// }
 	}
 
 	public function getPaginate($page, $total_row, $baseUrl, $typeOfGet)
 	{
 		$this->load->model('Image_model');
 
-
-
-		// $total_row = $modelMethod;
 		$per_page = 12;
 		$curr_page = 0;
 
@@ -77,17 +38,12 @@ class Home extends CI_Controller
 			$curr_page = $page;
 		}
 
-		
-
 		$this->load->library('pagination');
 		$config['base_url'] = $baseUrl;
 		$config['total_rows'] = $total_row;
 		$config['per_page'] = $per_page;
 		$config['uri_segment'] = 3;
 
-		// $config['enable_query_strings'] = true;
-		// $config['use_page_numbers'] = true;
-		// $config['page_query_string'] = true;
 		$config['reuse_query_string'] = true;
 
 		$config['full_tag_open'] = "<ul class='pagination pagination-ls justify-content-center'>";
@@ -99,16 +55,16 @@ class Home extends CI_Controller
 		$config['cur_tag_open'] = "<li class='page-item disabled'><a class='page-link' href=''>";
 		$config['cur_tag_close'] = "</a></li>";
 
-		$config['next_tag_open'] = "<li class='page-item'>";
+		$config['next_tag_open'] = "<li class='page-item' >";
 		$config['next_tag_close'] = "</li>";
 
-		$config['prev_tag_open'] = "<li class='page-item'>";
+		$config['prev_tag_open'] = "<li class='page-item' >";
 		$config['prev_tag_close'] = "</li>";
 
-		$config['first_tag_open'] = "<li class='page-item'>";
+		$config['first_tag_open'] = "<li class='page-item' >";
 		$config['first_tag_close'] = "</li>";
 
-		$config['last_tag_open'] = "<li class='page-item'>";
+		$config['last_tag_open'] = "<li class='page-item' >";
 		$config['last_tag_close'] = "</li>";
 
 		$config['next_link'] = 'Next';
@@ -119,8 +75,6 @@ class Home extends CI_Controller
 		$this->pagination->initialize($config);
 		$pagination = $this->pagination->create_links();
 
-
-
 		if ($typeOfGet == "All") {
 			$response_from_model  = $this->Image_model->getImage($per_page, $curr_page);
 		} else {
@@ -128,7 +82,6 @@ class Home extends CI_Controller
 			$response_from_model  = $this->Image_model->searchImage($per_page, $curr_page);
 		}
 		$this->load->vars('pagination', $pagination);
-
 
 		return $response_from_model;
 	}
@@ -141,20 +94,13 @@ class Home extends CI_Controller
 			die('GD library not found.');
 		}
 
-
-
 		// Set the path to the thumbnail images directory
 		$thumbnails_dir = './assets/thumbnails';
 		$thumbnail_array = array();
 
 		foreach ($response as $response_image) {
-
-			// print_r($response_image['image']);
-			// die();
-			// 
 			// Create a GD image resource from the image data
 			$image = imagecreatefromstring($response_image['image']);
-
 
 			// Calculate the dimensions of the thumbnail image
 			$thumbnail_width = 200;
@@ -185,18 +131,13 @@ class Home extends CI_Controller
 			// Remove the "data:image/png;base64," prefix from the data URL
 			$thumbnailData = ltrim($thumbnailData, 'data:image/png;base64,');
 
-
-
 			// Create an array of the thumbnail filenames
-			// $thumbnail_array[] = $thumbnailData;
 			$thumbnail_array[] = array(
 				'image' => $thumbnailData,
 				'id' => $response_image['property_id']
 			);
 		}
 
-		// print_r($thumbnail_array);
-		// die();
 		return $thumbnail_array;
 	}
 
@@ -205,34 +146,18 @@ class Home extends CI_Controller
 	public function searchByCaptionOrID($page = "")
 	{
 
-		// print_r($page);
-		// die();
-
 		$this->load->model('Image_model');
 
 		$total_row = $this->Image_model->getSearchTotalImageCount();
 		$baseUrl = base_url('index.php/Home/searchByCaptionOrID');
 		$typeOfGet = "Search";
 
-		// print_r($total_row);
-		// die()	;
-
 		$response_from_model = $this->getPaginate($page, $total_row, $baseUrl, $typeOfGet);
-
-
-		// $this->load->model('Image_model');
-		// $response_from_model  = $this->Image_model->searchImage();
-
-
 
 		$response = $this->getImg($response_from_model);
 
-
-
-
 		$search_query = $this->session->userdata('search_query');
 		$data['search_query'] = $search_query;
-
 
 		$data['thumbnails'] = $response;
 		$this->load->view('home', $data);

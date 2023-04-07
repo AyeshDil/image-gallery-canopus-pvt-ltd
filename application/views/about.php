@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Image Upload</title>
+  <title>About - Image Gallery</title>
 
   <link class="jsbin" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css" rel="stylesheet" type="text/css" />
   <script class="jsbin" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
@@ -36,7 +36,7 @@
             Simple image gallery application using the CodeIgniter framework,
             which allows users to upload images, search, and view them on a home page.
           </p>
-          <div class="col col-lg-6 ps-5" style="">
+          <div class="col col-lg-6 ps-5">
             <div class="col col-lg-12 ps-5">
               <p>
                 <u>Languages</u>
@@ -57,7 +57,7 @@
               </p>
             </div>
           </div>
-          <div class="col col-lg-6" style="">
+          <div class="col col-lg-6">
             <div class="col col-lg-12">
               <p>
                 <u>Frameworks</u>

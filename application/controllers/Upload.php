@@ -22,15 +22,6 @@ class Upload extends CI_Controller
 		if ($this->upload->do_upload('uploadedfile')) {
 
 			$generated_id = $this->generate(3, 100, 600000); // Generate user id
-			// $data = array('upload_data' => $this->upload->data());
-
-			// $image = $data['upload_data']['file_name'];
-
-			// $data['uploadedfile'] = $this->upload->data('file_name');
-			// print_r($data);
-
-			// echo "new new";
-			// print_r($image);
 
 			$file_data = $this->upload->data();
 			$this->load->model('Image_model');
@@ -38,8 +29,6 @@ class Upload extends CI_Controller
 
 			redirect('Home');
 
-			// $result = $this->Upload_model->save_upload($generated_id);
-			// echo json_decode($result);
 		} else {
 			echo $this->upload->display_errors();
 		}

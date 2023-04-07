@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>User Register</title>
+  <title>User Register - Image Gallery</title>
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
 
@@ -18,11 +18,11 @@
 
 <body style="background-color: #F1F0EA; font-family: 'Montserrat', sans-serif;">
 
-  <section style=" " class="p-5">
-    <div class="container mt-5" style="">
+  <section class="p-5">
+    <div class="container mt-5">
       <div class="row" style="background-color: #474448; color: white; border-radius: 30px;">
         <!-- Register Form -->
-        <div class="col col-lg-6" style="">
+        <div class="col col-lg-6">
           <div class=" d-flex justify-content-center">
             <!-- Register form -->
             <div class="col col-lg-12 row align-items-center" style=" height: 75vh;">
@@ -32,7 +32,7 @@
 
               <!-- <form method="post" action=""> -->
               <div class="d-flex justify-content-center">
-                <h1 style="" >Register</h1>
+                <h1>Register</h1>
               </div>
 
               <?php
@@ -56,7 +56,6 @@
                   <input type="text" class="form-control" id="lname" name="lname">
                 </div>
               </div>
-
 
               <div class="mt-2">
                 <label for="uname" class="form-label ">User Name </label>&nbsp;<span style="color:red">*</span>
@@ -98,17 +97,12 @@
         </div>
 
         <!-- image -->
-        <div class="col col-lg-6 p-0" style="">
-          <img style="width: 100%; height: 100%; object-fit: cover; border-radius: 0 30px 30px 0;" 
-          src="https://images.pexels.com/photos/69903/pexels-photo-69903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
+        <div class="col col-lg-6 p-0">
+          <img style="width: 100%; height: 100%; object-fit: cover; border-radius: 0 30px 30px 0;" src="https://images.pexels.com/photos/69903/pexels-photo-69903.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="">
         </div>
-
       </div>
-
-
     </div>
   </section>
-
 
   <!-- Bootstrap JS -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
